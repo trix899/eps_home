@@ -1,0 +1,52 @@
+esphome:
+  name: #Any name here 
+  friendly_name: #Any name here
+
+esp8266:
+  board: esp01_1m #check your board change as needed.
+
+logger:
+
+# Home Assistant API (optional but recommended).
+api:
+  # Encryption key for secure communication with Home Assistant.
+  encryption:
+    key: "your_encryption_key_here"
+
+ota:
+  # OTA password for over-the-air updates.
+  password: "your_ota_password_here"
+
+wifi:
+  # Replace with your Wi-Fi credentials.
+  ssid: "your_wifi_ssid"
+  password: "your_wifi_password"
+
+  manual_ip:
+    # Replace with your static IP configuration.
+    static_ip: 192.168.x.x
+    gateway: 192.168.x.x
+    subnet: 255.255.255.0
+    dns1: 8.8.8.8
+
+  ap:
+    # Fallback hotspot settings in case Wi-Fi connection fails. Can be removed if needed !
+    ssid: "Ro-Tank Fallback Hotspot"
+    password: "fallback_hotspot_password"
+
+sensor:
+  - platform: ultrasonic
+    name: Water Level Sensor
+    id: water_level_sensor
+    unit_of_measurement: '%' # Will show water level as a percentage. 
+    icon: mdi:water
+    trigger_pin: 0  #Check your board  
+    echo_pin: 2
+    update_interval: 10s  
+    filters:
+      # Lambda filter to adjust sensor output
+      # Replace values 65 with the actual height of your tank or max water level in centimeters.
+      # Do not change anything else if you dont have to.
+      - lambda: return ((((x*100)-10)-(65-10))/(65-10))*-100; 
+      # Filter out NaN (not-a-number) values
+      - filter_out: nan
