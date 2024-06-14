@@ -1,4 +1,5 @@
-# ⬇️ Esp Home Configs And Projects ⬇️
+#  Esp Home Configs And Projects 
+![Wemos D1](pics/trixban.png)
 
 All yaml files and hardware details from projects with ESP home.
 - ESPHome Ultrasonic Water Level Sensor
@@ -14,8 +15,8 @@ It includes setting up Wi-Fi, configuring a static IP, and processing sensor dat
 ## Requirements
 - ESP8266 microcontroller board (e.g., Wemos D1 Mini)
 - Ultrasonic sensor compatible with ESPHome (HC-SR04 Ultrasonic Range Sensor Used For This project see below)
-  
 - Access to Home Assistant (optional)
+
   ![Wemos D1](hardware_pics/ultrasonic.jpg)
 ## Hardware Connections
 - Trigger Pin to Pin 0 (D3)     (May differ if another board is used)
